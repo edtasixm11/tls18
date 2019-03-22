@@ -1,5 +1,6 @@
 #! /bin/bash
 cp /opt/docker/httpd.conf /etc/httpd/conf/httpd.conf
+mkdir /var/www/certs
 mkdir /var/www/www.auto1.cat
 mkdir /var/www/www.auto2.cat
 mkdir /var/www/www.web1.org
