@@ -1,5 +1,7 @@
 #! /bin/bash
-cp /opt/docker/httpd.conf /etc/httpd/conf/httpd.conf
+#cp /opt/docker/httpd.conf /etc/httpd/conf/httpd.conf
+cp /opt/docker/ssl.conf  /etc/httpd/conf.d/.
+cp /opt/docker/webs.conf /etc/httpd/conf.d/.
 mkdir /var/www/certs
 mkdir /var/www/www.auto1.cat
 mkdir /var/www/www.auto2.cat
@@ -27,5 +29,7 @@ cp /opt/docker/serverkey.web2.pem /var/www/certs/serverkey.web2.pem
 cp /opt/docker/servercert.web2.pem /var/www/certs/servercert.web2.pem
 # web default
 cp /opt/docker/index.plain.html /var/www/html/index.html
-sed -i -e s,'https.edt.org','https.edt.org www.auto1.cat www.auto2.cat www.web1.org www.web2.org', /etc/hosts
+#sed -i -e s,'https.edt.org','https.edt.org www.auto1.cat www.auto2.cat www.web1.org www.web2.org', /etc/hosts
+sed  's/https.edt.org/https.edt.org www.auto1.cat www.auto2.cat www.web1.org www.web2.org/' /etc/hosts > /tmp/hosts$$
+cp /tmp/hosts$$ /etc/hosts
 
