@@ -3,4 +3,11 @@
 
 Documentació / configuracions per a realitzar exercicis de OpenSSL.
 
+**certs-keys**
+
+**tls18:https**
+
+**tls18:ldaps**
+
+**tls18:vpn**
 
