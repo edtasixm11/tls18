@@ -30,6 +30,6 @@ cp /opt/docker/servercert.web2.pem /var/www/certs/servercert.web2.pem
 # web default
 cp /opt/docker/index.plain.html /var/www/html/index.html
 #sed -i -e s,'https.edt.org','https.edt.org www.auto1.cat www.auto2.cat www.web1.org www.web2.org', /etc/hosts
-sed  's/https.edt.org/https.edt.org www.auto1.cat www.auto2.cat www.web1.org www.web2.org/' /etc/hosts > /tmp/hosts$$
+sed  's/https.edt.org/https.edt.org www.auto1.cat www.auto2.cat www.web1.org www.web2.org www.web1.org www.web2.org/' /etc/hosts > /tmp/hosts$$
 cp /tmp/hosts$$ /etc/hosts
 
