@@ -1,5 +1,16 @@
+# HTTPS
+## @ edt ASIX M11-SAD Curs 2018-2019
 
+Servidor https amb certificats digitals.
 
+Seus virtuals:
+
+ * www.auto1.cat amb selfsigned certificate
+ * www.auto2.cat amb seldsigned certificate
+ * www.web1.org certificat de servidor avalat per la ca VeritatAbsoluta
+ * www.web2.org certificat de servidor avalat per la ca VeritatAbsoluta
+
+#### Generació de claus, requests i certs
 
 openssl req -new -x509 -days 3650 -nodes -keyout serverkey.auto1.pem -out servercert.auto1.pem
 
