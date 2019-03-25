@@ -5,8 +5,8 @@ Servidor https amb certificats digitals.
 
 Seus virtuals:
 
- * www.auto1.cat amb selfsigned certificate
- * www.auto2.cat amb seldsigned certificate
+ * www.auto1.cat amb self-signed certificate
+ * www.auto2.cat amb self-signed certificate
  * www.web1.org certificat de servidor avalat per la ca VeritatAbsoluta
  * www.web2.org certificat de servidor avalat per la ca VeritatAbsoluta
 
