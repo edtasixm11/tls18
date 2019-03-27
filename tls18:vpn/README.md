@@ -75,3 +75,11 @@ Client:
                 DirName:/C=KG/ST=NA/L=BISHKEK/O=OpenVPN-TEST/emailAddress=me@myhost.mydomain
                 serial:A1:4E:DE:FA:90:F2:AE:81
 ```
+
+Engegar el servei:
+
+```
+Server:  # systemctl  start openvpn-server@server.service
+Client1: # systemctl  start openvpn-client@client.service 
+Client2: # systemctl  start openvpn-client@client.service
+```
