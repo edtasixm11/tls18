@@ -33,5 +33,8 @@ $ openssl x509 -CAkey cakey.pem -CA cacert.pem -req -in clientreq.1vpn.pem -days
 
 client 2: key i cert
 ```
+$ openssl  genrsa -out clientkey.2vpn.pem
+$ openssl req -new -key clientkey.2vpn.pem -out clientreq.2vpn.pem
+$ openssl x509 -CAkey cakey.pem -CA cacert.pem -req -in clientreq.2vpn.pem -days 3650 -CAcreateserial -out clientcert.2vpn.pem
 
 ```
