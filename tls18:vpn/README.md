@@ -83,3 +83,10 @@ Server:  # systemctl  start openvpn-server@server.service
 Client1: # systemctl  start openvpn-client@client.service 
 Client2: # systemctl  start openvpn-client@client.service
 ```
+
+Test:
+```
+ping 10.8.0.1
+ping 10.8.0.4
+ping 10.8.0.10
+```
