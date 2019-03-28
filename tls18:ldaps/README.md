@@ -37,7 +37,7 @@ TLS_CACERT /etc/openldap/certs/cacert.pem
 En la pròpia imatge ldap configurar el client ldap per usar el certificat de la CA:
 ```
 /etc/openldap/ldap.con:
-TLS_CACERT /opt/docker/servercert.ldap.pem
+TLS_CACERT /opt/docker/cacert.pem
 ```
 
 #### Ordres client:
