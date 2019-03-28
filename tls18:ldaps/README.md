@@ -47,3 +47,25 @@ Desar e un fitxer el debug:
 ```
 ldapsearch -x -ZZ -H ldap://ldap.edt.org -d1   dn  2> log
 ```
+
+
+## Subject Alternative Name
+
+**Atenció** Si es genera un nou certificat cal generar de nou la imatge docker i fer el run,
+no podem simplement copiar-la en calent al container per fer el test perquè el certificat es
+carrega al slapd en temps de construccció (en fer *slaptest*) de la base de dades.
+
+Fitexr de extensions amb noms alternatius de host del servidor:
+```
+```
+
+Generar el certificat nou:
+```
+
+```
+
+Test:
+```
+
+```
+
