@@ -6,6 +6,10 @@ i la base de dades *dc=edt,dc=org*. Aquest servei
 permet l'accés segur via TLS/SSL amb *ldaps* i 
 també *starttls*.
 
+```
+$ docker run --rm --name ldap.edt.org -h ldap.edt.org -d edtasixm11/tls18:ldaps
+```
+
 #### Configuració:
 
 Per tal de que escolti també al port ldaps (636) a 
@@ -21,6 +25,19 @@ TLSCertificateFile          /etc/openldap/certs/servercert.ldap.pem
 TLSCertificateKeyFile       /etc/openldap/certs/serverkey.ldap.pem
 TLSVerifyClient       never
 TLSCipherSuite HIGH:MEDIUM:LOW:+SSLv2
+```
+
+En el client cal configurar el certificat de la CA que ha de validar el certificat
+del servidor:
+```
+/etc/openldap/ldap.conf:
+TLS_CACERT /etc/openldap/certs/cacert.pem
+```
+
+En la pròpia imatge ldap configurar el client ldap per usar el certificat de la CA:
+```
+/etc/openldap/ldap.con:
+TLS_CACERT /opt/docker/servercert.ldap.pem
 ```
 
 #### Ordres client:
@@ -85,7 +102,33 @@ openssl x509 -noout -text -in servercert.ldap.pem
 
 Test ldap
 ```
+# ldapsearch -x -LLL -h 172.17.0.2 -s base -b 'dc=edt,dc=org' dn
+dn: dc=edt,dc=org
 
+# ldapsearch -x -LLL -Z -h 172.17.0.2 -s base -b 'dc=edt,dc=org' dn
+dn: dc=edt,dc=org
+
+# ldapsearch -x -LLL -ZZ -h 172.17.0.2 -s base -b 'dc=edt,dc=org' dn
+dn: dc=edt,dc=org
+
+# ldapsearch -x -LLL -H ldaps://172.17.0.2  -s base -b 'dc=edt,dc=org' dn
+dn: dc=edt,dc=org
+
+# ldapsearch -x -LLL -H ldaps://172.17.0.2:636  -s base -b 'dc=edt,dc=org' dn
+dn: dc=edt,dc=org
+
+# ldapsearch -x -LLL -ZZ -H ldaps://172.17.0.2 -s base -b 'dc=edt,dc=org' dn
+ldap_start_tls: Operations error (1)
+	additional info: TLS already started
+```
+
+```
+# cat /etc/hosts
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+172.17.0.2 ldap.edt.org mysecureldapserver.org
+
+# ldapsearch -x -LLL -H ldaps://ldap.edt.org -s base -b 'dc=edt,dc=org' dn
+dn: dc=edt,dc=org
 ```
 
 test del certificat:
