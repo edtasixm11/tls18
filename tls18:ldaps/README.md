@@ -131,8 +131,26 @@ ldap_start_tls: Operations error (1)
 dn: dc=edt,dc=org
 ```
 
-test del certificat:
+Test del certificat:
+```
+# openssl s_client -connect 172.17.0.2:636 < /dev/null 2> /dev/null | openssl x509 -noout -tex
 ```
 
+Test des de l'interior del container:
 ```
+# ldapsearch -x -LLL -ZZ -h 127.0.0.1 -s base
+dn: dc=edt,dc=org
+dc: edt
+description: Escola del treball de Barcelona
+objectClass: dcObject
+objectClass: organization
+o: edt.org
+
+[root@ldap docker]# ldapsearch -x -LLL -H ldaps://127.0.0.1 -s base dn
+dn: dc=edt,dc=org
+
+[root@ldap docker]# ldapsearch -x -LLL -H ldaps://localhost -s base dn
+dn: dc=edt,dc=org
+```
+
 
